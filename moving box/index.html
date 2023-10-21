@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animated Progress Bar</title>
+    <style>
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #f2f2f2;
+        }
+        .progress-container {
+            position: relative;
+            height: 10px;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #ddd;
+            z-index: 1;
+            border-radius: 5px; /* add border-radius to make the edges round */
+        }
+        .progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #4CAF50;
+            animation: progress 3s linear infinite;
+            z-index: 2;
+            border-radius: 5px; /* add border-radius to make the edges round */
+        }
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 50px;
+            width: 50px;
+            background-image: url('asset/box.png');
+            background-size: contain;
+            animation: move 3s linear infinite;
+            z-index: 3;
+        }
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        @keyframes move {
+            0% { left: 0%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Animated Progress Bar</h1>
+    <div class="container" style="width: 500px;">
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+            <div class="progress"></div>
+        </div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
