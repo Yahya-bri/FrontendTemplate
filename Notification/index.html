@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Toast Notification 01</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <button id="success-btn">Success</button>
+        <button id="danger-btn">Danger</button>
+        <button id="warning-btn">Warning</button>
+        <div id="notification-container"></div>
+        <script>
+            const successBtn = document.getElementById('success-btn');
+            const dangerBtn = document.getElementById('danger-btn');
+            const warningBtn = document.getElementById('warning-btn');
+            const notificationContainer = document.getElementById('notification-container');
+
+            successBtn.addEventListener('click', () => {
+                showNotification('success', 'Your action was successful!');
+            });
+
+            dangerBtn.addEventListener('click', () => {
+                showNotification('danger', 'An error occurred. Please try again later.');
+            });
+
+            warningBtn.addEventListener('click', () => {
+                showNotification('warning', 'Warning: This action cannot be undone.');
+            });
+
+            function showNotification(type, message) {
+                const notification = document.createElement('div');
+                notification.classList.add('notification', `notification--${type}`);
+                notification.innerHTML = `
+                    <div class="notification__body">
+                        <img src="assets/${type}-icon.svg" alt="${type}" class="notification__icon">
+                        ${message}
+                    </div>
+                    <div class="notification__progress notification__progress--${type}"></div>
+                `;
+                notificationContainer.appendChild(notification);
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+            }
+        </script>
+    </body>
+</html>
